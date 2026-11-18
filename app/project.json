@@ -10,7 +10,8 @@
     "基线拟合",
     "损失核算",
     "能量对账",
-    "运行归档"
+    "运行归档",
+    "日结"
   ],
   "rule": "仅用有效对照逆变器和相同辐照区间拟合基线；重叠限电事件先求并集再积分",
   "lane": "L10",
@@ -29,7 +30,8 @@
     "baseline",
     "loss",
     "reconcile",
-    "archive"
+    "archive",
+    "settle"
   ],
   "labels": {
     "id": "证据号",
@@ -65,6 +67,15 @@
     "energy_balanced": "能量守恒",
     "unknown_segments": "未定片段",
     "unknown_seconds": "未定 s",
+    "day": "结算日",
+    "local_start": "开始 本地",
+    "local_end": "结束 本地",
+    "piece_count": "分段数",
+    "crossed": "跨零",
+    "days": "跨越自然日",
+    "post_seconds": "零点后 s",
+    "post_unknown_seconds": "零点后未定 s",
+    "revision": "日结版本",
     "line": "原始行",
     "_line": "原始行",
     "detail": "原因"

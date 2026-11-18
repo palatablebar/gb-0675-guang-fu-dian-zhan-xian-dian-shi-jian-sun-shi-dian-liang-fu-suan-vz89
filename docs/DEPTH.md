@@ -13,6 +13,7 @@
 | M5 损失核算 | 执行并复核损失核算 | `POST /api/loss` | `app/modules/loss/rules.py` | `tests/test_loss.py` |
 | M6 能量对账 | 执行并复核能量对账 | `POST /api/reconcile` | `app/modules/reconcile/rules.py` | `tests/test_reconcile.py` |
 | M7 运行归档 | 执行并复核运行归档 | `POST /api/archive` | `app/modules/archive/rules.py` | `tests/test_archive.py` |
+| M8 日结 | 执行并复核日结 | `POST /api/settle` | `app/modules/settle/rules.py` | `tests/test_settle.py` |
 
 ## 陷阱登记
 
@@ -29,6 +30,8 @@
 | TRAP-06 | 全角千分位 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/devices/rules.py` | `tests/test_devices.py::test_fullwidth_number` |
 | TRAP-11 | UTC归一 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/devices/rules.py` | `tests/test_devices.py::test_time_equivalence` |
 | TRAP-23 | 限电区间并集 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/slicing/rules.py` | `tests/test_slicing.py::test_overlapping_real` |
+| TRAP-24 | 限电跨本地零点 | 整段记开始日或简单切日丢失事件关联 | 按自然日切分且每段保留事件与采样依据，零点后无证据部分保持未定 | `app/modules/settle/rules.py` | `tests/test_settle.py::test_no_adjacent_day_backfill` |
+| TRAP-25 | 同日重跑 | 重复新增或覆盖已复核日结 | 按(批次,结算日)幂等落库，复核走乐观版本 | `app/store.py` | `tests/test_settle.py::test_settlement_rerun_no_duplicates_no_overwrite` |
 
 ## 对账规则
 
